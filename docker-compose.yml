@@ -26,6 +26,8 @@ services:
             - "12380:2380"
         volumes:
             - ./data/etcd1:/etcd-data:rw
+        networks:
+            - bridge-network
 
     etcd-2:
         <<: *common_settings
@@ -46,6 +48,8 @@ services:
             - "22380:2380"
         volumes:
             - ./data/etcd2:/etcd-data:rw
+        networks:
+            - bridge-network
 
     etcd-3:
         <<: *common_settings
@@ -66,4 +70,10 @@ services:
             - "32380:2380"
         volumes:
             - ./data/etcd3:/etcd-data:rw
+        networks:
+            - bridge-network
 
+networks:
+    bridge-network:
+        driver:  bridge
+        enable_ipv6: false
