@@ -199,6 +199,5 @@ gpj
 
 ### Docker Images
 
-- [etcd][docker-image-etcd]
-
-[docker-image-etcd]: https://quay.io/repository/coreos/etcd?tab=tags
+- [docker-image-etcd](https://quay.io/repository/coreos/etcd?tab=tags&tag=v3.5.7)
+- [etcd official release](https://github.com/etcd-io/etcd/releases/tag/v3.5.7)
