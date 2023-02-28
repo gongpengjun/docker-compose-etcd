@@ -86,7 +86,11 @@ etcd-cluster_etcd-3_1   /usr/local/bin/etcd --name ...   Up      0.0.0.0:32379->
 gongpengjun@nuc:docker-compose-etcd$ ifconfig | grep "10.0.0." | sed -En 's/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
 10.0.0.23
 
-
+gongpengjun@mbp ~$ curl -s http://10.0.0.23:12379/version | jq
+{
+  "etcdserver": "3.5.7",
+  "etcdcluster": "3.5.0"
+}
 gongpengjun@mbp ~$ ETCDCTL_API=3 etcdctl --write-out=table --endpoints=http://10.0.0.23:12379 member list
 +------------------+---------+--------+--------------------+--------------------+------------+
 |        ID        | STATUS  |  NAME  |     PEER ADDRS     |    CLIENT ADDRS    | IS LEARNER |
