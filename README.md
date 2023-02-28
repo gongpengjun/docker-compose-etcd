@@ -83,7 +83,8 @@ gongpengjun@nuc:docker-compose-etcd$ docker-compose ps
 etcd-cluster_etcd-1_1   /usr/local/bin/etcd --name ...   Up      0.0.0.0:12379->2379/tcp, 0.0.0.0:12380->2380/tcp
 etcd-cluster_etcd-2_1   /usr/local/bin/etcd --name ...   Up      0.0.0.0:22379->2379/tcp, 0.0.0.0:22380->2380/tcp
 etcd-cluster_etcd-3_1   /usr/local/bin/etcd --name ...   Up      0.0.0.0:32379->2379/tcp, 0.0.0.0:32380->2380/tcp
-
+gongpengjun@nuc:docker-compose-etcd$ ifconfig | grep "10.0.0." | sed -En 's/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
+10.0.0.23
 
 
 gongpengjun@mbp ~$ ETCDCTL_API=3 etcdctl --write-out=table --endpoints=http://10.0.0.23:12379 member list
