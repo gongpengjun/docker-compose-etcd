@@ -17,6 +17,7 @@ services:
             - '--advertise-client-urls=http://etcd-1:2379'
             - '--heartbeat-interval=250'
             - '--election-timeout=1250'
+            - '--data-dir=/etcd-data'
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
@@ -24,7 +25,7 @@ services:
             - "12379:2379"
             - "12380:2380"
         volumes:
-            - etcd1:/etcd_data
+            - ./data/etcd1:/etcd-data:rw
 
     etcd-2:
         <<: *common_settings
@@ -36,6 +37,7 @@ services:
             - '--advertise-client-urls=http://etcd-2:2379'
             - '--heartbeat-interval=250'
             - '--election-timeout=1250'
+            - '--data-dir=/etcd-data'            
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
@@ -43,7 +45,7 @@ services:
             - "22379:2379"
             - "22380:2380"
         volumes:
-            - etcd2:/etcd_data
+            - ./data/etcd2:/etcd-data:rw
 
     etcd-3:
         <<: *common_settings
@@ -55,6 +57,7 @@ services:
             - '--advertise-client-urls=http://etcd-3:2379'
             - '--heartbeat-interval=250'
             - '--election-timeout=1250'
+            - '--data-dir=/etcd-data'
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
@@ -62,9 +65,5 @@ services:
             - "32379:2379"
             - "32380:2380"
         volumes:
-            - etcd3:/etcd_data
+            - ./data/etcd3:/etcd-data:rw
 
-volumes:
-    etcd1:
-    etcd2:
-    etcd3:
