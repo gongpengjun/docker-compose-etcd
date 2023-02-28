@@ -20,6 +20,9 @@ services:
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
+        ports:
+            - "12379:2379"
+            - "12380:2380"
         volumes:
             - etcd1:/etcd_data
 
@@ -36,6 +39,9 @@ services:
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
+        ports:
+            - "22379:2379"
+            - "22380:2380"
         volumes:
             - etcd2:/etcd_data
 
@@ -52,6 +58,9 @@ services:
             - '--initial-cluster=etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380,etcd-3=http://etcd-3:2380'
             - '--initial-cluster-state=new'
             - *flag_initial_cluster_token
+        ports:
+            - "32379:2379"
+            - "32380:2380"
         volumes:
             - etcd3:/etcd_data
 
